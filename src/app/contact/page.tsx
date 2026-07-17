@@ -132,7 +132,7 @@ export default function ContactPage() {
                                     <Mail className="w-5 h-5 text-[#ea0614] flex-shrink-0 mt-0.5" />
                                     <div>
                                         <span className="font-bold text-white block uppercase mb-1 font-mono">Secured Relays</span>
-                                        <span>{contact?.email || 'Setymanas4@gmail.com'}</span>
+                                        <span>{contact?.email || 'manas@kalkidynamics.in'}</span>
                                     </div>
                                 </li>
 
