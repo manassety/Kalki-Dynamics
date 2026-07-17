@@ -87,10 +87,6 @@ export default function AboutPage() {
                                 <span className="font-mono text-xl font-bold text-white block">{ceo.name}</span>
                                 <span className="text-[9px] font-mono text-[#555] tracking-wider uppercase">Founder & CEO</span>
                             </div>
-                            <div>
-                                <span className="font-mono text-xl font-bold text-white block">24 Registered</span>
-                                <span className="text-[9px] font-mono text-[#555] tracking-wider uppercase">Edge-Silicon Patents</span>
-                            </div>
                         </div>
                     </motion.div>
 
