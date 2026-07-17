@@ -1,0 +1,277 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-brand-red: #ea0614;
+  --color-brand-black: #000000;
+  --color-brand-graphite: #121212;
+  --color-brand-silver: #c0c0c0;
+  
+  --font-orbitron: var(--font-orbitron);
+  --font-outfit: var(--font-outfit);
+}
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  
+  --crimson-glow: 0 0 20px rgba(234, 6, 20, 0.4);
+  --crimson-glow-strong: 0 0 40px rgba(234, 6, 20, 0.85);
+  --silver-glow: 0 0 20px rgba(192, 192, 192, 0.2);
+}
+
+html, body {
+  background-color: #000000;
+  color: #ffffff;
+  overflow-x: hidden;
+  font-family: var(--font-outfit), sans-serif;
+  scroll-behavior: auto; /* Handled by Lenis */
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1c1c1e;
+  border-radius: 3px;
+  transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ea0614;
+  box-shadow: 0 0 10px #ea0614;
+}
+
+/* Glassmorphism base */
+.glass-node {
+  background: rgba(18, 18, 18, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-node:hover {
+  border-color: rgba(234, 6, 20, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(234, 6, 20, 0.1), inset 0 0 12px rgba(255, 255, 255, 0.02);
+}
+
+/* Glow Border Animation */
+.glow-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(234, 6, 20, 0.25),
+    transparent
+  );
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.glow-border:hover::before {
+  left: 200%;
+  transition: 0.8s ease-in-out;
+}
+
+/* Red Energy Lines */
+.energy-beam {
+  position: relative;
+}
+
+.energy-beam::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ea0614, transparent);
+  animation: energy-pulse 4s infinite linear;
+}
+
+@keyframes energy-pulse {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Dragon constellation pulse helper */
+.pulse-red {
+  box-shadow: 0 0 0 0 rgba(234, 6, 20, 0.7);
+  animation: pulsing-dot 2s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes pulsing-dot {
+  to {
+    box-shadow: 0 0 0 10px rgba(234, 6, 20, 0);
+  }
+}
+
+/* Custom Scanlines */
+.scanline {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg, 
+    rgba(255, 0, 0, 0.06), 
+    rgba(0, 255, 0, 0.02), 
+    rgba(0, 0, 255, 0.06)
+  );
+  background-size: 100% 4px, 6px 100%;
+}
+
+/* Smooth drag cursor container */
+.cursor-ring {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(234, 6, 20, 0.4);
+  border-radius: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s;
+  z-index: 9999;
+}
+
+.cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: #ea0614;
+  border-radius: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  z-index: 10000;
+  box-shadow: var(--crimson-glow-strong);
+}
+
+.custom-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(234, 6, 20, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(234, 6, 20, 0.03) 1px, transparent 1px);
+}
+
+/* Apple-style smooth gradient text animate */
+.text-radial-glow {
+  background: radial-gradient(circle at center, #ffffff 30%, rgba(255, 255, 255, 0.4) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-crimson-glow {
+  background: linear-gradient(to right, #ffffff 40%, #ff8890, #ea0614);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   VIEW TRANSITIONS API ENGINE - CINEMATIC DIRECTORY
+   ========================================================================== */
+
+/* Disable default blend cross-fade and enforce high-end viewport continuity */
+::view-transition-group(root) {
+  animation-duration: 800ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 800ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+}
+
+/* Old Page (Exit Anim) */
+::view-transition-old(root) {
+  animation-name: cinematic-exit;
+}
+
+/* New Page (Entry Anim) */
+::view-transition-new(root) {
+  animation-name: cinematic-entry;
+}
+
+@keyframes cinematic-exit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px) brightness(1) contrast(1);
+  }
+  30% {
+    /* Glass morph blur starting overlay */
+    filter: blur(4px) brightness(0.8) contrast(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.94);
+    filter: blur(20px) brightness(0) contrast(1.4);
+  }
+}
+
+@keyframes cinematic-entry {
+  0% {
+    opacity: 0;
+    transform: scale(1.06);
+    filter: blur(20px) brightness(0) contrast(1.4);
+  }
+  60% {
+    filter: blur(6px) brightness(1.1) contrast(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px) brightness(1) contrast(1);
+  }
+}
+
+/* Shared Elements Declarations */
+
+/* 1. Brand Logo continuity */
+::view-transition-group(site-logo) {
+  animation-duration: 800ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 2. Hero Header title continuity */
+::view-transition-group(hero-title) {
+  animation-duration: 800ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 3. Section Title continuity */
+::view-transition-group(section-header) {
+  animation-duration: 800ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 4. Action Button continuity */
+::view-transition-group(action-button) {
+  animation-duration: 800ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
